@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+
+<body>
+<div th:insert="fragments/head :: nav"></div>
+
+<div class="table-responsive">
+    <table class="table align-middle">
+        <thead>
+        <tr><h1>Product Overview > Books</h1>
+        </thead>
+        <tbody>
+        <tr class="align-bottom">
+            <td> </td>
+        </tr>
+        <tr>
+            <td class="align-top">Type</td>
+            <td class="align-top">Title</td>
+            <td class="align-top">Author</td>
+            <td class="align-top">Price</td>
+            <td class="align-top">Genre</td>
+            <td class="align-top">Pages</td>
+            <td class="align-top">BarCode</td>
+            <td class="align-top">Subject</td>
+            <td class="align-top">Summary</td>
+        </tr>
+        <tr th:each="books:${allNonFictbooks}">
+            <td th:text="${books.getType()}"></td>
+            <td th:text="${books.getTitle()}"></td>
+            <td th:text="${books.getAuthor()}"></td>
+            <td th:text="${books.getPrice()}"></td>
+            <td th:text="${books.getSubject()}"></td>
+<!--            <td th:each="books:*{books.getType()}" th:with="Fiction =${#books.get(")}" th:text="${books "></td>-->
+<!--            <td th:if="${books.type == 'Fiction'} in" th:text="${books "></td>-->
+            <td th:text="${books.getIsbn()}"></td>
+            <td th:text="${books.getNumberOfPages()}"></td>
+        </tr>
+        <tr th:each="books:${allFictbooks}">
+            <td th:text="${books.getType()}"></td>
+            <td th:text="${books.getTitle()}"></td>
+            <td th:text="${books.getAuthor()}"></td>
+            <td th:text="${books.getPrice()}"></td>
+            <td th:text="${books.getBookGenre()}"></td>
+            <td th:text="${books.getIsbn()}"></td>
+            <td th:text="${books.getNumberOfPages()}"></td>
+            <td th:text="${books.getSummary()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+.nav-link{
+    /*font-family: 'Big Shoulders Stencil Display', cursive;*/
+    /*font-family: 'Satisfy', cursive;*/
+    font-family: 'Train One', cursive;
+    /*font-family: 'Viaoda Libre', cursive;*/
+    font-size: x-large;
+    color: rgb(204, 38, 245);
+
+}
+.container{
+    width: 100%;
+    position:relative;
+    box-sizing: border-box;
+}
+.input-group{
+    font-family: 'Train One', cursive;
+
+}
+.table-responsive{
+    margin-left: 115px;
+    margin-right: 115px;
+}
+h1{
+    font-family:'Viaoda Libre', cursive;
+    color: rgba(92, 46, 92, 0.76);
+    font-size: 14px;
+}
+.align-top{
+    font-family: 'Train One', cursive;
+    color: rgb(41, 177, 213);
+    font-size: 20px;
+}

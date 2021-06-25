@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+
+<body>
+<div th:insert="fragments/head :: nav"></div>
+
+
+<div class="table-responsive">
+  <table class="table align-middle table-hover">
+    <thead>
+    <tr><h1>Product Overview</h1>
+    </thead>
+    <tbody>
+    <tr class="align-bottom">
+      <td> </td>
+    </tr>
+    <tr>
+      <td class="align-top">Title</td>
+      <td class="align-top">Type</td>
+      <td class="align-top">Price</td>
+    </tr>
+    <tr th:each="games:${allGames}">
+      <td th:text="${games.getTitle()}"></td>
+      <td th:text="${games.getPrice()}"></td>
+      <td th:text="${games.get}"></td>
+    </tr>
+    <tr th:each="lps:${alllps}">
+      <td th:text="${lps.getTitle()}"></td>
+      <td th:text="${lps.getPrice()}"></td>
+    </tr>
+    <tr th:each="books:${allBooks}">
+      <td th:text="${books.getTitle()}"></td>
+      <td th:text="${books.getPrice()}"></td>
+<!--      <td th:text="${books}"></td>-->
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

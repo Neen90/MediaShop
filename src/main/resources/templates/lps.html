@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+
+<body>
+
+<div th:insert="fragments/head :: nav"></div>
+<div class="table-responsive">
+    <table class="table align-middle">
+        <thead>
+        <tr><h1>Product Overview > Records</h1>
+        </thead>
+        <tbody>
+        <tr class="align-bottom">
+            <td> </td>
+        </tr>
+        <tr>
+            <td class="align-top">Type</td>
+            <td class="align-top">Title</td>
+            <td class="align-top">Artist</td>
+            <td class="align-top">Price</td>
+            <td class="align-top">Genre</td>
+        </tr>
+        <tr th:each="lps:${alllps}">
+            <td th:text="${lps.getType()}"></td>
+            <td th:text="${lps.getTitle()}"></td>
+            <td th:text="${lps.getArtist()}"></td>
+            <td th:text="${lps.getPrice()}"></td>
+            <td th:text="${lps.getLpGenre()}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
