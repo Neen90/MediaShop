@@ -16,4 +16,20 @@ public class LPService {
     public List<LP> getAllLPs() {
         return lpRepository.getAllLps();
     }
+
+    public void saveLp(LP newLP) {
+        lpRepository.saveLp(newLP);
+    }
+
+    public LP findLPById(long id) {
+        return lpRepository.findLPById(id);
+    }
+
+    public void updateLP(LP lp) {
+        lpRepository.updateLP(lp);
+    }
+
+    public void deleteLP(long id) {
+        lpRepository.deleteLP(id);
+    }
 }

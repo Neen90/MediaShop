@@ -1,38 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en-IE" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head">
 </head>
 
 <body>
-
 <div th:insert="fragments/head :: nav"></div>
-<div class="table-responsive">
-    <table class="table align-middle">
-        <thead>
-        <tr><h1>Product Overview > Records</h1>
-        </thead>
-        <tbody>
-        <tr class="align-bottom">
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="align-top">Type</td>
-            <td class="align-top">Title</td>
-            <td class="align-top">Artist</td>
-            <td class="align-top">Price</td>
-            <td class="align-top">Genre</td>
-        </tr>
-        <tr th:each="lps:${alllps}">
-            <td th:text="${lps.getType()}"></td>
-            <td th:text="${lps.getTitle()}"></td>
-            <td th:text="${lps.getArtist()}"></td>
-            <td th:text="${lps.getPrice()}"></td>
-            <td th:text="${lps.getLpGenre()}"></td>
 
+<div class="table-responsive">
+    <h1>Product Overview > Records</h1>
+    <div class="align-bottom">
+        <p scope="col"><a class="small-icons" th:href="@{addLp}"><span class="material-icons">album</span>Add A New Record</a></p>
+    </div>
+    <table
+            class="table align-middle"
+            id="table"
+            data-search="true"
+            data-search-align="left"
+            data-show-columns="true"
+            data-show-multi-sort="true"
+            data-show-multi-sort-button="false"
+            data-sort-priority='[{"sortName": "title","sortOrder":"desc"},{"sortName":"price","sortOrder":"desc"}]'
+    >
+        <thead>
+        <tr>
+            <th class="align-top">Title</th>
+            <th class="align-top">Artist</th>
+            <th class="align-top">Price</th>
+            <th class="align-top">Genre</th>
+            <th class="align-top">Actions</th>
+        </tr>
+        </thead>
+       <tbody>
+        <tr th:each="lps:${alllps}">
+            <td class="align-bottom" th:text="${lps.getTitle()}"></td>
+            <td class="align-bottom" th:text="${lps.getArtist()}"></td>
+            <td class="align-bottom" th:text="${#numbers.formatCurrency(lps.getPrice())}"></td>
+            <td class="align-bottom" th:text="${lps.getLpGenre()}"></td>
+            <td>
+                <a class="small-icons" th:href="@{editLP/{id}(id=${lps.getId()})}"><span class="material-icons">edit</span>Edit</a>
+                <a class="small-icons" th:href="@{deleteLP/{id}(id=${lps.getId()})}"><span class="material-icons">delete</span>Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>
 </div>
 
 </body>
+
+<script>
+    $(function() {
+        $('#table').bootstrapTable()})
+</script>
+
 </html>

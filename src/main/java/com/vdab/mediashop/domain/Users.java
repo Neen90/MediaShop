@@ -2,6 +2,7 @@ package com.vdab.mediashop.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 
+@EqualsAndHashCode
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,10 +19,13 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Pattern(regexp = "^(([a-zA-Z]){1})(([a-zA-Z])|([-])){0,13}(([a-zA-Z]){1})$",
-            message = "Your name can't contain a number, whitespace or a special character, maximum of 15 characters")
+    @Column(unique = true,nullable = false)
     private String userName;
+    @Column(nullable = false)
+    private String password;
 
 
+    private boolean employee;
+
+    private boolean loggedIn;
 }

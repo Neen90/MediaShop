@@ -1,41 +1,95 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en-IE" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head">
 </head>
 
 <body>
 <div th:insert="fragments/head :: nav"></div>
 
+
 <div class="table-responsive">
-  <table class="table align-middle table-hover">
+    <h1>Product Overview > Games</h1>
+    <div class="align-bottom">
+        <p scope="col"><a class="small-icons" th:href="@{addGame}"><span class="material-icons">sports_esports</span>Add A New Game</a></p>
+    </div>
+
+    <table
+            class="table align-middle"
+            id="table"
+            data-search="true"
+            data-search-align="left"
+            data-show-columns="true"
+            data-show-multi-sort="true"
+            data-show-multi-sort-button="false"
+            data-sort-priority='[{"sortName": "title","sortOrder":"desc"},{"sortName":"price","sortOrder":"desc"}]'
+            >
     <thead>
-    <tr><h1>Product Overview > Games</h1>
+    <tr>
+        <!--      <td class="align-top">Type</td>-->
+        <th class="align-top" data-field="title" data-sortable="true">Title</th>
+        <th class="align-top" data-field="publisher" data-sortable="true">Publisher</th>
+        <th class="align-top" data-field="price" data-sortable="true">Price</th>
+        <th class="align-top" data-field="gameGenre" data-sortable="true">Genre</th>
+        <th class="align-top" data-field="minAge" data-sortable="true">Age Rating</th>
+        <th class="align-top">Actions</th>
+    </tr>
     </thead>
     <tbody>
-    <tr class="align-bottom">
-        <th scope="col"><a th:href="@{addGame}"><span class="material-icons">add</span></a></th>
-
-    </tr>
-    <tr>
-<!--      <td class="align-top">Type</td>-->
-      <th class="align-top">Title</th>
-      <th class="align-top">Publisher</th>
-      <th class="align-top">Price</th>
-      <th class="align-top">Genre</th>
-      <th class="align-top">Age Rating</th>
-    </tr>
     <tr th:each="games:${allGames}">
-<!--      <td th:text="${games.getType()}"></td>-->
-      <td th:text="${games.getTitle()}"></td>
-      <td th:text="${games.getPublisher()}"></td>
-      <td th:text="${games.getPrice()}"></td>
-      <td th:text="${games.getGameGenre()}"></td>
-      <td th:text="${games.getMinAge()}"></td>
+        <td class="align-bottom" th:text="${games.getTitle()}"></td>
+        <td class="align-bottom" th:text="${games.getPublisher()}"></td>
+        <td class="align-bottom" th:text="${#numbers.formatCurrency(games.getPrice())}"></td>
+        <td class="align-bottom" th:text="${games.getGameGenre()}"></td>
+        <td class="align-bottom" th:text="${games.getMinAge()}"></td>
+        <td>
+            <a class="small-icons" th:href="@{editGame/{id}(id=${games.getId()})}"><span class="material-icons">edit</span>Edit</a>
+            <a class="small-icons" th:href="@{deleteGame/{id}(id=${games.getId()})}"><span class="material-icons">delete</span>Delete</a>
+            <a class="small-icons" th:href="@{deleteGame/{id}(id=${games.getId()})}"><span class="material-icons">shopping_basket</span>Add</a>
+        </td>
     </tr>
     </tbody>
-  </table>
+
+
+</table>
 </div>
 
 
+<!--<div class="table-responsive">-->
+<!--  <table class="table" id="table" data-filter-control="true">-->
+<!--    <thead>-->
+<!--    <tr><h1>Product Overview > Games</h1>-->
+<!--    <tr class="align-bottom">-->
+<!--        <th scope="col"><a class="small-icons" th:href="@{addGame}"><span class="material-icons">sports_esports</span>Add A New Game</a></th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--&lt;!&ndash;      <td class="align-top">Type</td>&ndash;&gt;-->
+<!--      <th  data-field="title" data-filter-control="input">Title</th>-->
+<!--      <th class="align-top">Publisher</th>-->
+<!--      <th class="align-top">Price</th>-->
+<!--      <th  data-field="genre" data-filter-control="select">Genre</th>-->
+<!--      <th class="align-top">Age Rating</th>-->
+<!--      <th class="align-top">Actions</th>-->
+<!--    </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--    <tr th:each="games:${allGames}">-->
+<!--      <td th:text="${games.getTitle()}"></td>-->
+<!--      <td th:text="${games.getPublisher()}"></td>-->
+<!--      <td th:text="${games.getPrice()}"></td>-->
+<!--      <td th:text="${games.getGameGenre()}"></td>-->
+<!--      <td th:text="${games.getMinAge()}"></td>-->
+<!--        <td>-->
+<!--            <a class="small-icons" th:href="@{editGame/{id}(id=${games.getId()})}"><span class="material-icons">edit</span>Edit</a>-->
+<!--            <a class="small-icons" th:href="@{deleteGame/{id}(id=${games.getId()})}"><span class="material-icons">delete</span>Delete</a>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->
+
 </body>
+<script>
+    $(function() {
+        $('#table').bootstrapTable()})
+</script>
 </html>

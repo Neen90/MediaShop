@@ -7,12 +7,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Data
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,6 +23,9 @@ public class Order {
 
     @ManyToOne
     private Users users;
+
+    @OneToMany(targetEntity = OrderLine.class)
+    private List<OrderLine> orderLines;
 
 
 }

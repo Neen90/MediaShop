@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+</head>
+
+<body>
+<div th:insert="fragments/head :: nav"></div>
+
+<form method="post" th:action="@{/editedLP/{id}(id=${editLP.id})}"  th:object="${editLP}">
+
+    <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+            <input th:value="${editLP.getTitle()}" class="form-control" id="title" placeholder="Record Title" name="title">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="artist" class="col-sm-2 col-form-label">Artist</label>
+        <div class="col-sm-10">
+            <input th:value="${editLP.getArtist()}" class="form-control" id="artist" placeholder="artist" name="artist">
+        </div>
+    </div>
+
+    <div class="form-group row">
+    <label for="lpGenre" class="col-sm-2 col-form-label">Genre</label>
+    <div class="col-sm-10">
+        <select class="form-control" id="lpGenre" placeholder="Record Genre" name="lpGenre">
+            <option th:each="lPGenre : ${lPGenre}" th:text="${lPGenre}" th:value="${lPGenre}"></option>
+        </select>
+    </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="vendorId" class="col-sm-2 col-form-label">Supplier</label>
+        <div class="col-sm-10">
+            <input th:value="${editLP.getVendorId()}" class="form-control" id="vendorId" placeholder="Supplier code"name="vendorId">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="price" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+            <input th:value="${editLP.getPrice()}" class="form-control" id="price" placeholder="price"name="price">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+</form>
+
+</body>
+</html>

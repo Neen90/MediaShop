@@ -17,9 +17,11 @@ import javax.persistence.*;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"publisher","title"}))
 public class Game extends Article {
-
+    @Column(length = 100)
     private String publisher;
     private Long minAge;
     @Enumerated(EnumType.STRING)
     private GameGenre gameGenre;
+
+//    private String type ="Game";
 }

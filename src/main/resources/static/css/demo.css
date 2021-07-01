@@ -19,14 +19,47 @@
 .table-responsive{
     margin-left: 115px;
     margin-right: 115px;
+    border: none!important;
 }
 h1{
     font-family:'Viaoda Libre', cursive;
     color: rgba(92, 46, 92, 0.76);
     font-size: 14px;
 }
-.align-top{
+.align-top {
     font-family: 'Train One', cursive;
-    color: rgb(41, 177, 213);
-    font-size: 20px;
+    color: rgba(41, 177, 213, 0.71);
+    font-size: 14px;
+    border: none!important;
+}
+.align-bottom{
+
+    /*font-family:'Viaoda Libre', cursive;*/
+    /*color: rgba(92, 46, 92, 0.76);*/
+    /*font-size: 14px;*/
+    border: none !important;
+    max-width: 300px;
+}
+.form-group{
+    margin-left: 215px;
+    margin-right: 215px;
+    width: auto;
+}
+.small-icons{
+    font-family: 'Train One', cursive;
+    color: rgba(204, 38, 245, 0.53);
+    text-decoration: none;
+}
+.material-icons-outlined{
+    color: rgba(204, 38, 245, 0.53);
+}
+/*table search*/
+.pull-left{
+    width: 200px;
+    font-family:'Viaoda Libre', cursive;
+    float: none !important;
+    height: 10px;
+}
+p{
+    max-width: 100%;
 }

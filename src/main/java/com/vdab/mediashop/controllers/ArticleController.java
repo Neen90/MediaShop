@@ -1,5 +1,6 @@
 package com.vdab.mediashop.controllers;
 
+import com.vdab.mediashop.services.ArticleService;
 import com.vdab.mediashop.services.BookService;
 import com.vdab.mediashop.services.GameService;
 import com.vdab.mediashop.services.LPService;
@@ -16,9 +17,12 @@ public class ArticleController {
     private GameService gameService;
     @Autowired
     private LPService lpService;
+    @Autowired
+    private ArticleService articleService;
 
     @GetMapping(value = "/productoverview")
     public String showOverviewPage(Model model){
+        model.addAttribute("allArticles",articleService.getAllArticles());
         model.addAttribute("allGames",gameService.getAllGames());
         model.addAttribute("alllps",lpService.getAllLPs());
         model.addAttribute("allBooks",bookService.getAllBooks());

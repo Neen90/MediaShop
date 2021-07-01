@@ -21,10 +21,13 @@ public abstract class Article {
 //    @Column(insertable = false,updatable = false)
 //    @GeneratedValue(strategy =GenerationType.AUTO)
 //    //private String type;
-    @Column(precision = 2,nullable = false)
+    @Column(precision = 5,scale = 2,nullable = false)
     private Double price;
     @Column(length = 100,nullable = false)
     private String vendorId;
+
+//    @Transient
+//    private String type;
 
 //    @OneToMany
 //    private List<Rating> ratingList;

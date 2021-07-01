@@ -18,10 +18,12 @@ import javax.persistence.*;
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"artist","title"}))
 
 public class LP extends Article {
-
+    @Column(length = 100)
     private String artist;
 
     @Enumerated(EnumType.STRING)
     private LPGenre lpGenre;
 
+
+//    private String type = "LP";
 }

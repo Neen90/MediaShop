@@ -20,8 +20,7 @@ public class Fiction extends Book {
     @Enumerated(EnumType.STRING)
     @Column
     private BookGenre bookGenre;
-    @Column
+
+    @Column(length = 255)
     private String summary;
-    @Column(insertable = false,updatable = false)
-    private String type;
 }

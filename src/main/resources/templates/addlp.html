@@ -6,71 +6,73 @@
 <body>
 <div th:insert="fragments/head :: nav"></div>
 
-<form method="post" th:action="@{/saveGame}"  th:object="${newGame}">
+<form method="post" th:action="@{/saveLp}"  th:object="${newLps}">
     <div class="form-group row">
         <label for="title" class="col-sm-2 col-form-label">Title</label>
         <div class="col-sm-10">
-            <input class="form-control" id="title" placeholder="Game Title" name="title">
+            <input class="form-control" id="title" placeholder="Record Title" name="title">
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
+        <label for="artist" class="col-sm-2 col-form-label">Artist</label>
         <div class="col-sm-10">
-            <input class="form-control" id="publisher" placeholder="publisher" name="publisher">
+            <input class="form-control" id="artist" placeholder="artist" name="artist">
         </div>
     </div>
-        <div class="form-group row">
-            <label for="minAge" class="col-sm-2 col-form-label">Minimun Age</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" id="minAge" placeholder="Minimum Age" name="minAge">
-            </div>
-        </div>
+
     <div class="form-group row">
-    <label for="gameGenre" class="col-sm-2 col-form-label">Genre</label>
+    <label for="lpGenre" class="col-sm-2 col-form-label">Genre</label>
     <div class="col-sm-10">
-        <select class="form-control" id="gameGenre" placeholder="gameGenre" name="gameGenre">
-            <option th:each="gameGenre : ${gameGenre}" th:text="${gameGenre}" th:value="${gameGenre}"></option>
+        <select class="form-control" id="lpGenre" placeholder="Record Genre" name="lpGenre">
+            <option th:each="lPGenre : ${lPGenre}" th:text="${lPGenre}" th:value="${lPGenre}"></option>
         </select>
     </div>
-    </div>
+        </div>
 <!--    <fieldset class="form-group">-->
 <!--        <div class="row">-->
 <!--            <legend class="col-form-label col-sm-2 pt-0">Genre</legend>-->
 <!--            <div class="col-sm-10">-->
 <!--                <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="MMORPG" value="MMORPG" checked>-->
-<!--                    <label class="form-check-label" for="MMORPG">-->
-<!--                        MMORPG-->
+<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="genre0" value="MMORPG" checked>-->
+<!--                    <label class="form-check-label" for="genre0">-->
+<!--                        Classical-->
 <!--                    </label>-->
 <!--                </div>-->
 <!--                <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="RPG" value="RPG">-->
-<!--                    <label class="form-check-label" for="RPG">-->
-<!--                        RPG-->
+<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="genre1" value="RPG">-->
+<!--                    <label class="form-check-label" for="genre1">-->
+<!--                        Pop-->
 <!--                    </label>-->
 <!--                </div>-->
 <!--                <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="FPS" value="FPS">-->
-<!--                    <label class="form-check-label" for="FPS">-->
-<!--                        FPS-->
+<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="genre2" value="FPS">-->
+<!--                    <label class="form-check-label" for="genre2">-->
+<!--                        Rock-->
 <!--                    </label>-->
 <!--                </div>-->
 <!--                <div class="form-checK">-->
-<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="RTS" value="RTS">-->
-<!--                    <label class="form-check-label" for="RTS">-->
-<!--                        RTS-->
+<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="genre3" value="RTS">-->
+<!--                    <label class="form-check-label" for="genre3">-->
+<!--                        Dance-->
 <!--                    </label>-->
 <!--                </div>-->
 <!--                <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="RACE" value="RACE">-->
-<!--                    <label class="form-check-label" for="RACE">-->
-<!--                        RACE-->
+<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="genre4" value="RACE">-->
+<!--                    <label class="form-check-label" for="genre4">-->
+<!--                        R&B-->
 <!--                    </label>-->
 <!--                </div>-->
+<!--                <div class="form-check">-->
+<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="genre5" value="RACE">-->
+<!--                    <label class="form-check-label" for="genre5">-->
+<!--                        Hip Hop-->
+<!--                    </label>-->
+<!--                </div>-->
+
 <!--            </div>-->
 <!--        </div>-->
-    <!--    </fieldset>-->
+<!--    </fieldset>-->
         <div class="form-group row">
             <label for="vendorId" class="col-sm-2 col-form-label">Supplier</label>
             <div class="col-sm-10">

@@ -19,10 +19,14 @@ import java.util.List;
 public abstract class Book extends Article{
     @Column(length = 100)
     private String author;
+
+    @Column(unique = true,nullable = false)
 //    @Pattern(regexp= "^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3}) " +
 //            "[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$) " +
-//            "(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$" , message = "ISBN must be correctly formatted.")
+//            "(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$" , message = "ISBN must be correctly formatted.",)
     private String isbn;
     private Long numberOfPages;
+    @Column(insertable = false,updatable = false)
+    private String type;
 
   }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en-IE" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head">
 </head>
 
@@ -8,36 +8,54 @@
 
 
 <div class="table-responsive">
-  <table class="table align-middle table-hover">
-    <thead>
-    <tr><h1>Product Overview</h1>
-    </thead>
-    <tbody>
-    <tr class="align-bottom">
-      <td> </td>
-    </tr>
-    <tr>
-      <td class="align-top">Title</td>
-      <td class="align-top">Type</td>
-      <td class="align-top">Price</td>
-    </tr>
-    <tr th:each="games:${allGames}">
-      <td th:text="${games.getTitle()}"></td>
-      <td th:text="${games.getPrice()}"></td>
-      <td th:text="${games.get}"></td>
-    </tr>
-    <tr th:each="lps:${alllps}">
-      <td th:text="${lps.getTitle()}"></td>
-      <td th:text="${lps.getPrice()}"></td>
-    </tr>
-    <tr th:each="books:${allBooks}">
-      <td th:text="${books.getTitle()}"></td>
-      <td th:text="${books.getPrice()}"></td>
-<!--      <td th:text="${books}"></td>-->
-    </tr>
-    </tbody>
-  </table>
+    <h1>Product Overview</h1>
+    <div class="align-bottom">
+        <p>
+            <span scope="col"><a class="small-icons" th:href="@{addFiction}"><span
+                    class="material-icons">menu_book</span> Add A New Fiction Book</a></span>
+            <span scope="col"><a class="small-icons" th:href="@{addNonFiction}"><span
+                    class="material-icons">menu_book</span>Add A New Non-Fiction Book</a></span>
+            <span scope="col"><a class="small-icons" th:href="@{addLp}"><span
+                    class="material-icons">album</span>Add A New Record</a></span>
+            <span scope="col"><a class="small-icons" th:href="@{addGame}"><span
+                    class="material-icons">sports_esports</span>Add A New Game</a></span>
+        </p>
+    </div>
+    <table
+            class="table align-middle table-hover"
+            id="table"
+            data-search="true"
+            data-search-align="left"
+            data-show-columns="true"
+            data-show-multi-sort="true"
+            data-show-multi-sort-button="false"
+            data-sort-priority='[{"sortName": "title","sortOrder":"desc"},{"sortName":"price","sortOrder":"desc"}]'
+    >
+        <thead>
+        <tr>
+            <th class="align-top" data-field="title" data-sortable="true">Title</th>
+            <th class="align-top" data-field="price" data-sortable="true">Price</th>
+            <th class="align-top" data-field="type" data-sortable="true">Type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="article:${allArticles}">
+            <td class="align-bottom" th:text="${article.getTitle()}"></td>
+            <td class="align-bottom" th:text="${#numbers.formatCurrency(article.getPrice())}"></td>
+            <td class="align-bottom" th:if="${article instanceof T(com.vdab.mediashop.domain.Game)}" th:text="Game">
+            <td class="align-bottom" th:if="${article instanceof T(com.vdab.mediashop.domain.LP)}" th:text="LP"></td>
+            <td class="align-bottom" th:if="${article instanceof T(com.vdab.mediashop.domain.Book)}"
+                th:text="${article.getType()}"></td>
+        </tr>
+
+        </tbody>
+    </table>
 </div>
 
 </body>
+<script>
+    $(function () {
+        $('#table').bootstrapTable()
+    })
+</script>
 </html>

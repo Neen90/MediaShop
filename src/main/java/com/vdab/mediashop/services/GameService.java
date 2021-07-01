@@ -19,4 +19,16 @@ public class GameService {
     public void saveGame(Game newGame) {
         gameRepository.saveGame(newGame);
     }
+
+    public Game findGameById(long id) {
+        return gameRepository.findGameById(id);
+    }
+
+    public void updateGame(Game game) {
+        gameRepository.updateGame(game);
+    }
+
+    public void deleteGame(long id) {
+        gameRepository.deleteGame(id);
+    }
 }

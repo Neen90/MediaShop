@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en-IE" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head">
 </head>
 
@@ -7,52 +7,77 @@
 <div th:insert="fragments/head :: nav"></div>
 
 <div class="table-responsive">
-    <table class="table align-middle">
+    <h1>Product Overview > Books</h1>
+    <div class="align-bottom">
+        <p><span scope="col"><a class="small-icons" th:href="@{addFiction}"><span class="material-icons">menu_book</span> Add A New Fiction Book</a></span>
+        <span scope="col"><a class="small-icons" th:href="@{addNonFiction}"><span class="material-icons">menu_book</span>Add A New Non-Fiction Book</a></span></p>
+    </div>
+    <table
+            class="table align-middle"
+            id="table"
+            data-search="true"
+            data-search-align="left"
+            data-show-columns="true"
+            data-show-multi-sort="true"
+            data-show-multi-sort-button="false"
+            data-sort-priority='[{"sortName": "title","sortOrder":"desc"},{"sortName":"price","sortOrder":"desc"}]'
+    >
         <thead>
-        <tr><h1>Product Overview > Books</h1>
+          <tr>
+            <th class="align-top">Type</th>
+            <th class="align-top">Title</th>
+            <th class="align-top">Author</th>
+            <th class="align-top">Price</th>
+            <th class="align-top">Genre</th>
+            <th class="align-top">Subject</th>
+            <th class="align-top">BarCode</th>
+            <th class="align-top">Pages</th>
+            <th class="align-top">Summary</th>
+            <th class="align-top">Action</th>
+          </tr>
         </thead>
         <tbody>
-        <tr class="align-bottom">
-            <td> </td>
-        </tr>
-        <tr>
-            <td class="align-top">Type</td>
-            <td class="align-top">Title</td>
-            <td class="align-top">Author</td>
-            <td class="align-top">Price</td>
-            <td class="align-top">Genre</td>
-            <td class="align-top">Pages</td>
-            <td class="align-top">BarCode</td>
-            <td class="align-top">Subject</td>
-            <td class="align-top">Summary</td>
-        </tr>
         <tr th:each="books:${allNonFictbooks}">
-            <td th:text="${books.getType()}"></td>
-            <td th:text="${books.getTitle()}"></td>
-            <td th:text="${books.getAuthor()}"></td>
-            <td th:text="${books.getPrice()}"></td>
-            <td th:text="${books.getSubject()}"></td>
+            <td class="align-bottom" th:text="${books.getType()}"></td>
+            <td class="align-bottom" th:text="${books.getTitle()}"></td>
+            <td class="align-bottom" th:text="${books.getAuthor()}"></td>
+            <td class="align-bottom" th:text="${#numbers.formatCurrency(books.getPrice())}"></td>
+            <td></td>
+            <td class="align-bottom" th:text="${books.getSubject()}"></td>
 <!--            <td th:each="books:*{books.getType()}" th:with="Fiction =${#books.get(")}" th:text="${books "></td>-->
 <!--            <td th:if="${books.type == 'Fiction'} in" th:text="${books "></td>-->
-            <td th:text="${books.getIsbn()}"></td>
-            <td th:text="${books.getNumberOfPages()}"></td>
+            <td class="align-bottom" th:text="${books.getIsbn()}"></td>
+            <td class="align-bottom" th:text="${books.getNumberOfPages()}"></td>
+            <td></td>
+            <td>
+                <a class="small-icons" th:href="@{editNonFiction/{id}(id=${books.getId()})}"><span class="material-icons">edit</span>Edit</a>
+                <a class="small-icons" th:href="@{deleteNonFiction/{id}(id=${books.getId()})}"><span class="material-icons">delete</span>Delete</a>
+            </td>
         </tr>
         <tr th:each="books:${allFictbooks}">
-            <td th:text="${books.getType()}"></td>
-            <td th:text="${books.getTitle()}"></td>
-            <td th:text="${books.getAuthor()}"></td>
-            <td th:text="${books.getPrice()}"></td>
-            <td th:text="${books.getBookGenre()}"></td>
-            <td th:text="${books.getIsbn()}"></td>
-            <td th:text="${books.getNumberOfPages()}"></td>
-            <td th:text="${books.getSummary()}"></td>
+            <td class="align-bottom" th:text="${books.getType()}"></td>
+            <td class="align-bottom" th:text="${books.getTitle()}"></td>
+            <td class="align-bottom" th:text="${books.getAuthor()}"></td>
+            <td class="align-bottom" th:text="${#numbers.formatCurrency(books.getPrice())}"></td>
+            <td class="align-bottom" th:text="${books.getBookGenre()}"></td>
+            <td></td>
+            <td class="align-bottom" th:text="${books.getIsbn()}"></td>
+            <td class="align-bottom" th:text="${books.getNumberOfPages()}"></td>
+            <td class="align-bottom" th:text="${books.getSummary()}"></td>
+            <td>
+                <a class="small-icons" th:href="@{editFiction/{id}(id=${books.getId()})}"><span class="material-icons">edit</span>Edit</a>
+                <a class="small-icons" th:href="@{deleteFiction/{id}(id=${books.getId()})}"><span class="material-icons">delete</span>Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>
 </div>
 
-
-
-
 </body>
+
+<script>
+    $(function() {
+        $('#table').bootstrapTable()})
+</script>
+
 </html>
