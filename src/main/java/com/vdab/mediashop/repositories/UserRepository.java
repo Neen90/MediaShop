@@ -17,7 +17,6 @@ public class UserRepository {
     @Transactional(rollbackOn = Exception.class)
     public void saveNewUser(Users newUser) {
         entityManager.persist(newUser);
-
     }
 
     public List<Users> getUsers() {
@@ -34,7 +33,9 @@ public class UserRepository {
         return entityManager.find(Users.class, id);
     }
 
-    public Users findByUserName(String userName) {
-        return entityManager.find(Users.class, userName);
+    @Transactional(rollbackOn = Exception.class)
+    public void updateToLoggedOut(Users loggedOutUser) {
+
+        entityManager.merge(loggedOutUser);
     }
 }

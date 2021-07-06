@@ -2,6 +2,7 @@ package com.vdab.mediashop.controllers;
 
 import com.vdab.mediashop.domain.Users;
 import com.vdab.mediashop.services.UserService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +38,17 @@ public class NavigationController {
             userService.updateLoginValue(loggedInUser.getId());
             return "redirect:/productoverview";
         }
+//    @GetMapping(value = "/logout")
+//    public String showLoggedOut(Model model,HttpSession session){
+//        return "logout";
+//    }
+//    @PostMapping(value = "/logout")
+//    public String showLoggedOut(@ModelAttribute Users loggedOutUser, HttpSession session){
+//        loggedOutUser = userService.findById(loggedOutUser.getId());
+//        session.setAttribute("loggedInUser", loggedOutUser);
+//        userService.updateToLoggedOut(loggedOutUser.getId());
+//        return "redirect:/";
+//    }
 
 
     @GetMapping(value = "/signup")

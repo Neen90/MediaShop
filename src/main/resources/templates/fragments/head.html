@@ -61,15 +61,12 @@
             <form class="form-inline">
                 <div class="input-group">
                     <div class="input-group-prepend">
-<!--                        <span class="input-group-text" id="basic-addon1">Login</span>-->
-<!--                    </div>-->
-<!--                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"-->
-<!--                           aria-describedby="basic-addon1">-->
-                <button type="button" class=" btn btn-outline-info input-group-text"><a class="nav-link" th:href="@{/login}"><span class="material-icons">login</span>Login</a></button>
+                         <button type="button" th:if="${session.loggedInUser}" class=" btn btn-outline-info input-group-text"><a class="nav-link" th:action="@{/logout}" th:object="${loggedOutUser}"><span class="material-icons">logout</span>Logout</a></button>
+                        <button type="button" th:unless="${session.loggedInUser}" class=" btn btn-outline-info input-group-text"><a class="nav-link" th:href="@{/login}"><span class="material-icons">login</span>Login</a></button>
                     </div>
                         <hr>
                     <div>
-                        <button type="button" class=" btn btn-outline-info input-group-text"><a class="nav-link" th:href="@{/signup}">Sign up</a></button>
+                        <button type="button" th:unless="${session.loggedInUser}" class=" btn btn-outline-info input-group-text"><a class="nav-link" th:href="@{/signup}">Sign up</a></button>
                     </div>
                 </div>
             </form>
@@ -88,10 +85,10 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-3">
                         <h2 class="footer-heading">Services</h2>
-                        <ul class="footer-ul">
-                            <li class="footer-li"><a class="foot-anchor" th:href="@{/books}">Books</a></li>
-                            <li class="footer-li"><a class="foot-anchor"th:href="@{/lps}">Record</a></li>
-                            <li class="footer-li"><a class="foot-anchor" th:href="@{/games}">Games</a></li>
+                        <ul  class="footer-ul">
+                            <li class="footer-li"><a th:if="${session.loggedInUser}" class="foot-anchor" th:href="@{/books}">Books</a></li>
+                            <li class="footer-li"><a th:if="${session.loggedInUser}" class="foot-anchor"th:href="@{/lps}">Record</a></li>
+                            <li class="footer-li"><a th:if="${session.loggedInUser}" class="foot-anchor" th:href="@{/games}">Games</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-6 col-md-3">

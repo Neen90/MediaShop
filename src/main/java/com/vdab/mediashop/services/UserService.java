@@ -31,4 +31,10 @@ public class UserService {
         users.setLoggedIn(true);
         userRepository.updateLoginValue(users);
     }
+
+    public void updateToLoggedOut(Long id) {
+        Users users = userRepository.findById(id);
+        users.setLoggedIn(false);
+        userRepository.updateToLoggedOut(users);
+    }
 }
