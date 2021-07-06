@@ -15,3 +15,5 @@ INSERT INTO `mediashop`.`lp` (`price`, `title`, `vendor_id`, `artist`, `lp_genre
 INSERT INTO `mediashop`.`lp` (`price`, `title`, `vendor_id`, `artist`, `lp_genre`) VALUES ('2.50', 'UnPretty', 'Record Store', 'TLC', 'R_AND_B');
 INSERT INTO `mediashop`.`lp` (`price`, `title`, `vendor_id`, `artist`, `lp_genre`) VALUES ('10.40', 'Out of the Blue', 'Record Store', 'Electric Light Orchastra', 'POP');
 INSERT INTO `mediashop`.`lp` (`price`, `title`, `vendor_id`, `artist`, `lp_genre`) VALUES ('80.00', 'Around the World', 'Record Store', 'Daft Punk', 'DANCE');
+INSERT INTO `mediashop`.`users` (`admin`, `password`, `user_name`) VALUES ('1', 'Administrator1!', 'Administrator');
+INSERT INTO `mediashop`.`users` (`password`, `user_name`) VALUES ('Customer1!', 'Customer');

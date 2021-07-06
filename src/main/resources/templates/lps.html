@@ -7,7 +7,7 @@
 <div th:insert="fragments/head :: nav"></div>
 
 <div class="table-responsive">
-    <h1>Product Overview > Records</h1>
+    <h1><a class="head1" th:href="@{/productoverview}">Product Overview</a> > Records</h1>
     <div class="align-bottom">
         <p scope="col"><a class="small-icons" th:href="@{addLp}"><span class="material-icons">album</span>Add A New Record</a></p>
     </div>
@@ -19,14 +19,13 @@
             data-show-columns="true"
             data-show-multi-sort="true"
             data-show-multi-sort-button="false"
-            data-sort-priority='[{"sortName": "title","sortOrder":"desc"},{"sortName":"price","sortOrder":"desc"}]'
     >
         <thead>
         <tr>
-            <th class="align-top">Title</th>
-            <th class="align-top">Artist</th>
-            <th class="align-top">Price</th>
-            <th class="align-top">Genre</th>
+            <th class="align-top"data-field="title" data-sortable="true">Title</th>
+            <th class="align-top"data-field="artist" data-sortable="true">Artist</th>
+            <th class="align-top"data-field="price" data-sortable="true">Price</th>
+            <th class="align-top"data-field="lPGenre" data-sortable="true">Genre</th>
             <th class="align-top">Actions</th>
         </tr>
         </thead>
@@ -44,6 +43,8 @@
         </tbody>
     </table>
 </div>
+
+<div th:insert="fragments/head :: footer"></div>
 
 </body>
 

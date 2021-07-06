@@ -1,5 +1,6 @@
 package com.vdab.mediashop.controllers;
 
+import com.vdab.mediashop.domain.*;
 import com.vdab.mediashop.services.ArticleService;
 import com.vdab.mediashop.services.BookService;
 import com.vdab.mediashop.services.GameService;
@@ -23,9 +24,13 @@ public class ArticleController {
     @GetMapping(value = "/productoverview")
     public String showOverviewPage(Model model){
         model.addAttribute("allArticles",articleService.getAllArticles());
-        model.addAttribute("allGames",gameService.getAllGames());
-        model.addAttribute("alllps",lpService.getAllLPs());
-        model.addAttribute("allBooks",bookService.getAllBooks());
+        model.addAttribute("orderedGame", new Game());
+        model.addAttribute("orderedFiction", new Fiction());
+        model.addAttribute("orderedNonFiction", new NonFiction());
+        model.addAttribute("orderedLp", new LP());
+//        model.addAttribute("allGames",gameService.getAllGames());
+//        model.addAttribute("alllps",lpService.getAllLPs());
+//        model.addAttribute("allBooks",bookService.getAllBooks());
         return "productoverview";
     }
 }

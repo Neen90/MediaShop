@@ -61,33 +61,56 @@
             <form class="form-inline">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Login</span>
+<!--                        <span class="input-group-text" id="basic-addon1">Login</span>-->
+<!--                    </div>-->
+<!--                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"-->
+<!--                           aria-describedby="basic-addon1">-->
+                <button type="button" class=" btn btn-outline-info input-group-text"><a class="nav-link" th:href="@{/login}"><span class="material-icons">login</span>Login</a></button>
                     </div>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                           aria-describedby="basic-addon1">
-                    <br>
+                        <hr>
                     <div>
-                        <p><a th:href="@{/signup}">Sign up</a></p>
+                        <button type="button" class=" btn btn-outline-info input-group-text"><a class="nav-link" th:href="@{/signup}">Sign up</a></button>
                     </div>
                 </div>
             </form>
-<!--            <form>-->
-<!--                <div class="form-group row">-->
-<!--                    <div class="col-sm-10">-->
-<!--                    <label for="exampleInputEmail1" class="col-sm-2 col-form-label">Login</label>-->
-<!--                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"placeholder="Username">-->
-<!--                    <div class="col-sm-10">-->
-<!--                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <br>-->
-<!--                <button type="button" class="btn btn-outline-secondary">Submit</button>-->
-<!--            </form>-->
         </nav>
     </div>
 </div>
+
+
+<div th:fragment="footer">
 <br>
 <br>
 <br>
+<br>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <h2 class="footer-heading">Services</h2>
+                        <ul class="footer-ul">
+                            <li class="footer-li"><a class="foot-anchor" th:href="@{/books}">Books</a></li>
+                            <li class="footer-li"><a class="foot-anchor"th:href="@{/lps}">Record</a></li>
+                            <li class="footer-li"><a class="foot-anchor" th:href="@{/games}">Games</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <h2 class="footer-heading">About</h2>
+                        <ul class="footer-ul">
+                            <li class="footer-li"><a class="foot-anchor" href="#">Company</a></li>
+                            <li class="footer-li"><a class="foot-anchor" href="#">Team</a></li>
+                            <li class="footer-li"><a class="foot-anchor" href="#">Careers</a></li>
+                            <li class="footer-li"><a class="foot-anchor" href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item">
+                        <h2 class="footer-heading">The MediaShop</h2>
+                        <p class="footer-li" >For your entertainment!</p>
+                    </div>
+                </div>
+                <p class="copyright">The MediaShop © 2021</p>
+            </div>
+        </footer>
+</div>
 </body>
 </html>

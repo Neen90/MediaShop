@@ -8,9 +8,10 @@
 
 
 <div class="table-responsive">
-    <h1>Product Overview > Games</h1>
+    <h1><a class="head1" th:href="@{/productoverview}">Product Overview</a> > Games</h1>
     <div class="align-bottom">
         <p scope="col"><a class="small-icons" th:href="@{addGame}"><span class="material-icons">sports_esports</span>Add A New Game</a></p>
+<!--        <p scope="col"><a th:hidden="${showAddFunction == false}" class="small-icons" th:href="@{addGame}"><span class="material-icons">sports_esports</span>Add A New Game</a></p>-->
     </div>
 
     <table
@@ -21,7 +22,6 @@
             data-show-columns="true"
             data-show-multi-sort="true"
             data-show-multi-sort-button="false"
-            data-sort-priority='[{"sortName": "title","sortOrder":"desc"},{"sortName":"price","sortOrder":"desc"}]'
             >
     <thead>
     <tr>
@@ -53,39 +53,7 @@
 </table>
 </div>
 
-
-<!--<div class="table-responsive">-->
-<!--  <table class="table" id="table" data-filter-control="true">-->
-<!--    <thead>-->
-<!--    <tr><h1>Product Overview > Games</h1>-->
-<!--    <tr class="align-bottom">-->
-<!--        <th scope="col"><a class="small-icons" th:href="@{addGame}"><span class="material-icons">sports_esports</span>Add A New Game</a></th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--&lt;!&ndash;      <td class="align-top">Type</td>&ndash;&gt;-->
-<!--      <th  data-field="title" data-filter-control="input">Title</th>-->
-<!--      <th class="align-top">Publisher</th>-->
-<!--      <th class="align-top">Price</th>-->
-<!--      <th  data-field="genre" data-filter-control="select">Genre</th>-->
-<!--      <th class="align-top">Age Rating</th>-->
-<!--      <th class="align-top">Actions</th>-->
-<!--    </tr>-->
-<!--      </thead>-->
-<!--      <tbody>-->
-<!--    <tr th:each="games:${allGames}">-->
-<!--      <td th:text="${games.getTitle()}"></td>-->
-<!--      <td th:text="${games.getPublisher()}"></td>-->
-<!--      <td th:text="${games.getPrice()}"></td>-->
-<!--      <td th:text="${games.getGameGenre()}"></td>-->
-<!--      <td th:text="${games.getMinAge()}"></td>-->
-<!--        <td>-->
-<!--            <a class="small-icons" th:href="@{editGame/{id}(id=${games.getId()})}"><span class="material-icons">edit</span>Edit</a>-->
-<!--            <a class="small-icons" th:href="@{deleteGame/{id}(id=${games.getId()})}"><span class="material-icons">delete</span>Delete</a>-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--  </table>-->
-<!--</div>-->
+<div th:insert="fragments/head :: footer"></div>
 
 </body>
 <script>

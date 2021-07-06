@@ -9,7 +9,7 @@
 
 <div class="table-responsive">
     <h1>Product Overview</h1>
-    <div class="align-bottom">
+    <div class="align-middle">
         <p>
             <span scope="col"><a class="small-icons" th:href="@{addFiction}"><span
                     class="material-icons">menu_book</span> Add A New Fiction Book</a></span>
@@ -29,13 +29,15 @@
             data-show-columns="true"
             data-show-multi-sort="true"
             data-show-multi-sort-button="false"
-            data-sort-priority='[{"sortName": "title","sortOrder":"desc"},{"sortName":"price","sortOrder":"desc"}]'
-    >
+        >
         <thead>
         <tr>
+
             <th class="align-top" data-field="title" data-sortable="true">Title</th>
             <th class="align-top" data-field="price" data-sortable="true">Price</th>
             <th class="align-top" data-field="type" data-sortable="true">Type</th>
+
+            <th class="align-top">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -44,13 +46,17 @@
             <td class="align-bottom" th:text="${#numbers.formatCurrency(article.getPrice())}"></td>
             <td class="align-bottom" th:if="${article instanceof T(com.vdab.mediashop.domain.Game)}" th:text="Game">
             <td class="align-bottom" th:if="${article instanceof T(com.vdab.mediashop.domain.LP)}" th:text="LP"></td>
-            <td class="align-bottom" th:if="${article instanceof T(com.vdab.mediashop.domain.Book)}"
-                th:text="${article.getType()}"></td>
+            <td class="align-bottom" th:if="${article instanceof T(com.vdab.mediashop.domain.Book)}" th:text="${article.getType()}"></td>
+            <td><a class="small-icons" th:object="${orderedGame}" th:href="@{/addToBasket}"><span class="material-icons">shopping_basket</span>Add</a></td>
+
         </tr>
 
         </tbody>
     </table>
 </div>
+
+
+<div th:insert="fragments/head :: footer"></div>
 
 </body>
 <script>

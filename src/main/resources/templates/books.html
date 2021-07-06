@@ -7,7 +7,7 @@
 <div th:insert="fragments/head :: nav"></div>
 
 <div class="table-responsive">
-    <h1>Product Overview > Books</h1>
+    <h1><a class="head1" th:href="@{/productoverview}">Product Overview</a> > Books</h1>
     <div class="align-bottom">
         <p><span scope="col"><a class="small-icons" th:href="@{addFiction}"><span class="material-icons">menu_book</span> Add A New Fiction Book</a></span>
         <span scope="col"><a class="small-icons" th:href="@{addNonFiction}"><span class="material-icons">menu_book</span>Add A New Non-Fiction Book</a></span></p>
@@ -20,18 +20,17 @@
             data-show-columns="true"
             data-show-multi-sort="true"
             data-show-multi-sort-button="false"
-            data-sort-priority='[{"sortName": "title","sortOrder":"desc"},{"sortName":"price","sortOrder":"desc"}]'
     >
         <thead>
           <tr>
-            <th class="align-top">Type</th>
-            <th class="align-top">Title</th>
-            <th class="align-top">Author</th>
-            <th class="align-top">Price</th>
-            <th class="align-top">Genre</th>
-            <th class="align-top">Subject</th>
+            <th class="align-top" data-field="type" data-sortable="true">Type</th>
+            <th class="align-top" data-field="title" data-sortable="true">Title</th>
+            <th class="align-top" data-field="author" data-sortable="true">Author</th>
+            <th class="align-top" data-field="price" data-sortable="true">Price</th>
+            <th class="align-top" data-field="genre" data-sortable="true">Genre</th>
+<!--            <th class="align-top">Subject</th>-->
             <th class="align-top">BarCode</th>
-            <th class="align-top">Pages</th>
+            <th class="align-top" data-field="numberOfPages" data-sortable="true">Pages</th>
             <th class="align-top">Summary</th>
             <th class="align-top">Action</th>
           </tr>
@@ -42,7 +41,7 @@
             <td class="align-bottom" th:text="${books.getTitle()}"></td>
             <td class="align-bottom" th:text="${books.getAuthor()}"></td>
             <td class="align-bottom" th:text="${#numbers.formatCurrency(books.getPrice())}"></td>
-            <td></td>
+<!--            <td></td>-->
             <td class="align-bottom" th:text="${books.getSubject()}"></td>
 <!--            <td th:each="books:*{books.getType()}" th:with="Fiction =${#books.get(")}" th:text="${books "></td>-->
 <!--            <td th:if="${books.type == 'Fiction'} in" th:text="${books "></td>-->
@@ -60,7 +59,7 @@
             <td class="align-bottom" th:text="${books.getAuthor()}"></td>
             <td class="align-bottom" th:text="${#numbers.formatCurrency(books.getPrice())}"></td>
             <td class="align-bottom" th:text="${books.getBookGenre()}"></td>
-            <td></td>
+<!--            <td></td>-->
             <td class="align-bottom" th:text="${books.getIsbn()}"></td>
             <td class="align-bottom" th:text="${books.getNumberOfPages()}"></td>
             <td class="align-bottom" th:text="${books.getSummary()}"></td>
@@ -72,6 +71,8 @@
         </tbody>
     </table>
 </div>
+
+<div th:insert="fragments/head :: footer"></div>
 
 </body>
 

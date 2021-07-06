@@ -24,8 +24,9 @@ public class Users {
     @Column(nullable = false)
     private String password;
 
+    @Column(columnDefinition = "boolean default false")
+    private boolean admin;
 
-    private boolean employee;
-
+     @Column(columnDefinition = "boolean default false")
     private boolean loggedIn;
 }

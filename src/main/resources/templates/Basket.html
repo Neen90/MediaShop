@@ -17,24 +17,26 @@
             <th class="align-top">Edit/Delete</th>
             <th class="align-top">Unit Price</th>
             <th class="align-top">Total Price</th>
-
         </tr>
         </thead>
         <tbody>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-<!--                <a class="small-icons" th:href="@{}"><span class="material-icons">edit</span>Edit</a>-->
-<!--                <a class="small-icons" th:href=""><span class="material-icons">delete</span>Delete</a>-->
+        <tr th:each="order:${allOrders}">
+            <td class="align-bottom" th:text="${order.getTitle()}"></td>
+            <td class="align-bottom" th:text="${order.getQuantity()}"></td>
+            <td class="align-bottom">
+                <!--                <a class=" small-icons
+                        " th:href="@{}"><span class="material-icons">edit</span>Edit</a>-->
+                <!--                <a class="small-icons" th:href=""><span class="material-icons">delete</span>Delete</a>-->
             </td>
-            <td></td>
-            <td></td>
+            <td class="align-bottom" th:text="${#numbers.formatCurrency(order.getPrice())}"></td>
+            <td class="align-bottom" th:text="${order.getTotalPrice}"></td>
 
         </tr>
         </tbody>
     </table>
 </div>
+
+<div th:insert="fragments/head :: footer"></div>
 
 </body>
 </html>

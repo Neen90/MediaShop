@@ -2,13 +2,15 @@ package com.vdab.mediashop.controllers;
 
 import com.vdab.mediashop.domain.Users;
 import com.vdab.mediashop.services.UserService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.swing.*;
+import java.util.List;
 
 @Controller
 public class NavigationController {
@@ -20,18 +22,30 @@ public class NavigationController {
         return "index";
     }
 
-//
-//    @GetMapping(value = "/loginPage")
-//    public String showLoginPage(){
-//        return "login";
-//    }
+
+    @GetMapping(value = "/login")
+    public String showLoginPage(Model model){
+        model.addAttribute("allusers",userService.getUsers());
+        model.addAttribute("loggedInUser", new Users());
+        return "login";
+    }
+   @PostMapping(value = "/loggedin")
+    public String showLoggedIn(@ModelAttribute Users loggedInUser, Model model){
+       loggedInUser.setUserName(userService.findById(loggedInUser.getId()).getUserName());
+       model.addAttribute("loggedInUser", loggedInUser);
+            userService.updateLoginValue(loggedInUser.getId());
+
+            return "redirect:/productoverview";
+        }
+
+
     @GetMapping(value = "/signup")
     public String showSignupPage(Model model){
         model.addAttribute("newUser",new Users());
         return "signup";
     }
     @PostMapping(value = "/saveNewUser")
-    public String saveNewUser(@ModelAttribute User newUser){
+    public String saveNewUser(@ModelAttribute Users newUser){
         userService.saveNewUser(newUser);
         return "redirect:/productoverview";
     }

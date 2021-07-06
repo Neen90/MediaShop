@@ -34,43 +34,6 @@
         </select>
     </div>
     </div>
-<!--    <fieldset class="form-group">-->
-<!--        <div class="row">-->
-<!--            <legend class="col-form-label col-sm-2 pt-0">Genre</legend>-->
-<!--            <div class="col-sm-10">-->
-<!--                <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="MMORPG" value="MMORPG" checked>-->
-<!--                    <label class="form-check-label" for="MMORPG">-->
-<!--                        MMORPG-->
-<!--                    </label>-->
-<!--                </div>-->
-<!--                <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="RPG" value="RPG">-->
-<!--                    <label class="form-check-label" for="RPG">-->
-<!--                        RPG-->
-<!--                    </label>-->
-<!--                </div>-->
-<!--                <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="FPS" value="FPS">-->
-<!--                    <label class="form-check-label" for="FPS">-->
-<!--                        FPS-->
-<!--                    </label>-->
-<!--                </div>-->
-<!--                <div class="form-checK">-->
-<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="RTS" value="RTS">-->
-<!--                    <label class="form-check-label" for="RTS">-->
-<!--                        RTS-->
-<!--                    </label>-->
-<!--                </div>-->
-<!--                <div class="form-check">-->
-<!--                    <input class="form-check-input" type="radio" name="gameGenre" id="RACE" value="RACE">-->
-<!--                    <label class="form-check-label" for="RACE">-->
-<!--                        RACE-->
-<!--                    </label>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-    <!--    </fieldset>-->
         <div class="form-group row">
             <label for="vendorId" class="col-sm-2 col-form-label">Supplier</label>
             <div class="col-sm-10">
@@ -88,11 +51,13 @@
 
     <div class="form-group row">
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-outline-info input-group-text">Submit</button>
         </div>
     </div>
 
 </form>
+
+<div th:insert="fragments/head :: footer"></div>
 
 </body>
 </html>

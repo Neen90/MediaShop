@@ -14,6 +14,12 @@ public class ArticleService {
     private ArticleRepository articleRepository;
 
     public List<Article> getAllArticles() {
-       return articleRepository.getAllArticles();
+
+        return articleRepository.getAllArticles();
+    }
+
+    public Article findArticleById(Article article) {
+//        if(Article.){}
+        return articleRepository.findArticleById(article);
     }
 }
