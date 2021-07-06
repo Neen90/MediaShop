@@ -46,16 +46,16 @@
                     <a class="nav-link" th:href="@{/productoverview}">Product Overview</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/books}">Books</a>
+                    <a class="nav-link" th:if="${session.loggedInUser}" th:href="@{/books}">Books</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/lps}">Records</a>
+                    <a class="nav-link" th:if="${session.loggedInUser}" th:href="@{/lps}">Records</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/games}">Games</a>
+                    <a class="nav-link" th:if="${session.loggedInUser}" th:href="@{/games}">Games</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/basket}"><span id="bag" class="material-icons">shopping_basket</span>Buy</a>
+                    <a class="nav-link" th:if="${session.loggedInUser}" th:href="@{/basket}"><span id="bag" class="material-icons">shopping_basket</span>Buy</a>
                 </li>
             </ul>
             <form class="form-inline">

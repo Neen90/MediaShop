@@ -9,7 +9,7 @@
 <div class="table-responsive">
     <h1><a class="head1" th:href="@{/productoverview}">Product Overview</a> > Records</h1>
     <div class="align-bottom">
-        <p scope="col"><a class="small-icons" th:href="@{addLp}"><span class="material-icons">album</span>Add A New Record</a></p>
+        <p scope="col"><a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{addLp}"><span class="material-icons">album</span>Add A New Record</a></p>
     </div>
     <table
             class="table align-middle"
@@ -36,8 +36,9 @@
             <td class="align-bottom" th:text="${#numbers.formatCurrency(lps.getPrice())}"></td>
             <td class="align-bottom" th:text="${lps.getLpGenre()}"></td>
             <td>
-                <a class="small-icons" th:href="@{editLP/{id}(id=${lps.getId()})}"><span class="material-icons">edit</span>Edit</a>
-                <a class="small-icons" th:href="@{deleteLP/{id}(id=${lps.getId()})}"><span class="material-icons">delete</span>Delete</a>
+                <a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{editLP/{id}(id=${lps.getId()})}"><span class="material-icons">edit</span>Edit</a>
+                <a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{deleteLP/{id}(id=${lps.getId()})}"><span class="material-icons">delete</span>Delete</a>
+                <a class="small-icons" th:if="${session.loggedInUser}"><span class="material-icons">shopping_basket</span>Add</a>
             </td>
         </tr>
         </tbody>

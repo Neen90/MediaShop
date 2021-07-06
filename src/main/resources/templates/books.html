@@ -9,8 +9,8 @@
 <div class="table-responsive">
     <h1><a class="head1" th:href="@{/productoverview}">Product Overview</a> > Books</h1>
     <div class="align-bottom">
-        <p><span scope="col"><a class="small-icons" th:href="@{addFiction}"><span class="material-icons">menu_book</span> Add A New Fiction Book</a></span>
-        <span scope="col"><a class="small-icons" th:href="@{addNonFiction}"><span class="material-icons">menu_book</span>Add A New Non-Fiction Book</a></span></p>
+        <p><span scope="col"><a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{addFiction}"><span class="material-icons">menu_book</span> Add A New Fiction Book</a></span>
+        <span scope="col"><a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{addNonFiction}"><span class="material-icons">menu_book</span>Add A New Non-Fiction Book</a></span></p>
     </div>
     <table
             class="table align-middle"
@@ -49,8 +49,9 @@
             <td class="align-bottom" th:text="${books.getNumberOfPages()}"></td>
             <td></td>
             <td>
-                <a class="small-icons" th:href="@{editNonFiction/{id}(id=${books.getId()})}"><span class="material-icons">edit</span>Edit</a>
-                <a class="small-icons" th:href="@{deleteNonFiction/{id}(id=${books.getId()})}"><span class="material-icons">delete</span>Delete</a>
+                <a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{editNonFiction/{id}(id=${books.getId()})}"><span class="material-icons">edit</span>Edit</a>
+                <a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{deleteNonFiction/{id}(id=${books.getId()})}"><span class="material-icons">delete</span>Delete</a>
+                <a class="small-icons" ><span class="material-icons">shopping_basket</span>Add</a>
             </td>
         </tr>
         <tr th:each="books:${allFictbooks}">
@@ -64,8 +65,9 @@
             <td class="align-bottom" th:text="${books.getNumberOfPages()}"></td>
             <td class="align-bottom" th:text="${books.getSummary()}"></td>
             <td>
-                <a class="small-icons" th:href="@{editFiction/{id}(id=${books.getId()})}"><span class="material-icons">edit</span>Edit</a>
-                <a class="small-icons" th:href="@{deleteFiction/{id}(id=${books.getId()})}"><span class="material-icons">delete</span>Delete</a>
+                <a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{editFiction/{id}(id=${books.getId()})}"><span class="material-icons">edit</span>Edit</a>
+                <a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{deleteFiction/{id}(id=${books.getId()})}"><span class="material-icons">delete</span>Delete</a>
+                <a class="small-icons" th:if="${session.loggedInUser}"><span class="material-icons">shopping_basket</span>Add</a>
             </td>
         </tr>
         </tbody>

@@ -10,7 +10,7 @@
 <div class="table-responsive">
     <h1><a class="head1" th:href="@{/productoverview}">Product Overview</a> > Games</h1>
     <div class="align-bottom">
-        <p scope="col"><a class="small-icons" th:href="@{addGame}"><span class="material-icons">sports_esports</span>Add A New Game</a></p>
+        <p scope="col"><a class="small-icons" th:if="${session.loggedInUser.isAdmin()}"  th:href="@{addGame}"><span class="material-icons">sports_esports</span>Add A New Game</a></p>
 <!--        <p scope="col"><a th:hidden="${showAddFunction == false}" class="small-icons" th:href="@{addGame}"><span class="material-icons">sports_esports</span>Add A New Game</a></p>-->
     </div>
 
@@ -42,9 +42,9 @@
         <td class="align-bottom" th:text="${games.getGameGenre()}"></td>
         <td class="align-bottom" th:text="${games.getMinAge()}"></td>
         <td>
-            <a class="small-icons" th:href="@{editGame/{id}(id=${games.getId()})}"><span class="material-icons">edit</span>Edit</a>
-            <a class="small-icons" th:href="@{deleteGame/{id}(id=${games.getId()})}"><span class="material-icons">delete</span>Delete</a>
-            <a class="small-icons" th:href="@{deleteGame/{id}(id=${games.getId()})}"><span class="material-icons">shopping_basket</span>Add</a>
+            <a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{editGame/{id}(id=${games.getId()})}"><span class="material-icons">edit</span>Edit</a>
+            <a class="small-icons" th:if="${session.loggedInUser.isAdmin()}" th:href="@{deleteGame/{id}(id=${games.getId()})}"><span class="material-icons">delete</span>Delete</a>
+            <a class="small-icons" th:if="${session.loggedInUser}" ><span class="material-icons">shopping_basket</span>Add</a>
         </td>
     </tr>
     </tbody>

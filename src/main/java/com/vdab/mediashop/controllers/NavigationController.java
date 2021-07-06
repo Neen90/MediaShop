@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import javax.swing.*;
 import java.util.List;
 
@@ -30,11 +31,10 @@ public class NavigationController {
         return "login";
     }
    @PostMapping(value = "/loggedin")
-    public String showLoggedIn(@ModelAttribute Users loggedInUser, Model model){
-       loggedInUser.setUserName(userService.findById(loggedInUser.getId()).getUserName());
-       model.addAttribute("loggedInUser", loggedInUser);
+    public String showLoggedIn(@ModelAttribute Users loggedInUser, HttpSession session){
+       loggedInUser = userService.findById(loggedInUser.getId());
+       session.setAttribute("loggedInUser", loggedInUser);
             userService.updateLoginValue(loggedInUser.getId());
-
             return "redirect:/productoverview";
         }
 
