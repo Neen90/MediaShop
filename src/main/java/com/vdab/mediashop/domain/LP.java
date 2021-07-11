@@ -11,8 +11,6 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@DiscriminatorColumn(name = "type")
-//@DiscriminatorValue("LP")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"artist","title"}))
@@ -24,6 +22,4 @@ public class LP extends Article {
     @Enumerated(EnumType.STRING)
     private LPGenre lpGenre;
 
-
-//    private String type = "LP";
 }

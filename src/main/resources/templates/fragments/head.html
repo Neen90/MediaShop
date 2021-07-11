@@ -61,7 +61,7 @@
             <form class="form-inline">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                         <button type="button" th:if="${session.loggedInUser}" class=" btn btn-outline-info input-group-text"><a class="nav-link" th:action="@{/logout}" th:object="${loggedOutUser}"><span class="material-icons">logout</span>Logout</a></button>
+                         <button type="button" th:if="${session.loggedInUser}" class=" btn btn-outline-info input-group-text"><a class="nav-link" th:href="@{/logout}" ><span class="material-icons">logout</span>Logout</a></button>
                         <button type="button" th:unless="${session.loggedInUser}" class=" btn btn-outline-info input-group-text"><a class="nav-link" th:href="@{/login}"><span class="material-icons">login</span>Login</a></button>
                     </div>
                         <hr>

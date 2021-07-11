@@ -22,8 +22,6 @@ public class ArticleRepository {
         articles.addAll(entityManager.createQuery("select l from LP l", Article.class).getResultList());
         articles.addAll(entityManager.createQuery("select b from Book b", Article.class).getResultList());
         return articles;
-
-
     }
 
     public Article findArticleById(Article article) {
@@ -37,4 +35,5 @@ public class ArticleRepository {
         }
         return null;
     }
+
 }

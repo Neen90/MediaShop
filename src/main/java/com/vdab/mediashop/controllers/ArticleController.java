@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ArticleController {
-    @Autowired
+    //    @Autowired
     private BookService bookService;
     @Autowired
     private GameService gameService;

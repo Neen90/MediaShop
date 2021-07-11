@@ -38,10 +38,13 @@ public class NavigationController {
             userService.updateLoginValue(loggedInUser.getId());
             return "redirect:/productoverview";
         }
-//    @GetMapping(value = "/logout")
-//    public String showLoggedOut(Model model,HttpSession session){
-//        return "logout";
-//    }
+    @GetMapping(value = "/logout")
+    public String showLoggedOut(Model model,HttpSession session){
+        Users currentUser = (Users)session.getAttribute("loggedInUser");
+        userService.updateToLoggedOut(currentUser.getId());
+        session.removeAttribute("loggedInUser");
+        return "index";
+    }
 //    @PostMapping(value = "/logout")
 //    public String showLoggedOut(@ModelAttribute Users loggedOutUser, HttpSession session){
 //        loggedOutUser = userService.findById(loggedOutUser.getId());

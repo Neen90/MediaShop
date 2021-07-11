@@ -11,8 +11,6 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@DiscriminatorColumn(name = "type")
-//@DiscriminatorValue("Game")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"publisher","title"}))
@@ -23,5 +21,4 @@ public class Game extends Article {
     @Enumerated(EnumType.STRING)
     private GameGenre gameGenre;
 
-//    private String type ="Game";
 }
